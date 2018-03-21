@@ -1,5 +1,7 @@
 package com.app.step_definitions;
 
+import static org.testng.Assert.fail;
+
 import com.app.pages.SuiteCRMDashboardPage;
 
 import cucumber.api.PendingException;

@@ -47,6 +47,12 @@ public class SuiteCRMDashboardPage {
 	@FindBy(xpath="(//a[@id='logout_link'])[3]")
 	public WebElement logoutLink;
 	
+	@FindBy(xpath="(//input[@id='query_string'])[6]")
+	public WebElement searchInput;
+	
+	@FindBy(xpath = "(//button[@id='searchbutton'])[3]")
+	public WebElement searchButton;
+	
 	public void logout() {
 		Actions action = new Actions(driver);
 		action.moveToElement(profileMenu);

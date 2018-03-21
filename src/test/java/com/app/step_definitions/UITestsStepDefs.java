@@ -58,19 +58,17 @@ public class UITestsStepDefs {
 		} catch (AssertionError e) {
 			dashboardPage.searchButton.click();
 		}
-		dashboardPage.searchInput.sendKeys(searchTerm +Keys.ENTER);
+		dashboardPage.searchInput.sendKeys(searchTerm + Keys.ENTER);
 	}
 
 	@Then("^link for user \"([^\"]*)\" should be displayed$")
 	public void link_for_user_should_be_displayed(String searchTerm) {
-		assertTrue(searchResultsPage.resultLink(searchTerm).isDisplayed(), 
-				searchTerm +" was not displayed");
+		assertTrue(searchResultsPage.resultLink(searchTerm).isDisplayed(), searchTerm + " was not displayed");
 	}
-	
+
 	@Then("^there should be (\\d+) result for \"([^\"]*)\"$")
-	public void there_should_be_result_for(int count, String searchTerm, String sadf) {
-	   int actual  = searchResultsPage.resultsLink(searchTerm).size();
-	   assertEquals(count, actual, "number of results did not match");
-	   
+	public void there_should_be_result_for(int count, String searchTerm) {
+		int actual = searchResultsPage.resultsLink(searchTerm).size();
+		assertEquals(actual, count, "number of results did not match");
 	}
 }

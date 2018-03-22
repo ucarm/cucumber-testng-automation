@@ -53,6 +53,12 @@ public class SuiteCRMDashboardPage {
 	@FindBy(xpath = "(//button[@id='searchbutton'])[3]")
 	public WebElement searchButton;
 	
+	@FindBy(linkText="CREATE")
+	public WebElement createLink;
+	
+	@FindBy(linkText="Create Task")
+	public WebElement createTask;
+	
 	public void logout() {
 		Actions action = new Actions(driver);
 		action.moveToElement(profileMenu);
@@ -64,6 +70,14 @@ public class SuiteCRMDashboardPage {
 	public void postNote(String note) {
 		postField.sendKeys(note);
 		post.click();
+	}
+
+	public void clickCreateTask() {
+		Actions actions = new Actions(driver);
+		actions.moveToElement(createLink).perform();
+		
+		BrowserUtils.waitForVisibility(createTask,5);
+		createTask.click();
 	}
 	
 }

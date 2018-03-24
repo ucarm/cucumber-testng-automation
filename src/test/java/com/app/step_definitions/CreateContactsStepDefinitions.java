@@ -2,10 +2,13 @@ package com.app.step_definitions;
 
 import static org.testng.Assert.assertEquals;
 
+import java.util.concurrent.TimeUnit;
+
 import com.app.pages.SuitCRMContactInformationPage;
 import com.app.pages.SuiteCRMCreateContactPage;
 import com.app.pages.SuiteCRMDashboardPage;
 import com.app.utilities.BrowserUtils;
+import com.app.utilities.Driver;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
@@ -42,24 +45,20 @@ public class CreateContactsStepDefinitions {
 	@When("^click on the save button$")
 	public void click_on_the_save_button() {
 		createContact.save.click();
+		try {
+			Driver.getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+			createContact.saveConfirmation.click();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
 	}
 
 	@Then("^I should see contact information for \"([^\"]*)\"$")
 	public void i_should_see_contact_information_for(String fullname) {
-		assertEquals(contactInformation.firsName, fullname.split(" ")[0]);
-		assertEquals(contactInformation.lastName, fullname.split(" ")[1]);
+		assertEquals(contactInformation.firsName.getText(), fullname.split(" ")[0]);
+		assertEquals(contactInformation.lastName.getText(), fullname.split(" ")[1]);
 
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-

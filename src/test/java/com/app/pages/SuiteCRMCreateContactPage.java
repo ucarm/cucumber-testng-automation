@@ -29,6 +29,11 @@ public class SuiteCRMCreateContactPage {
 
 	@FindBy(id = "SAVE")
 	public WebElement save;
+	
+	@FindBy(xpath = "//input[@title='Save']")
+	public WebElement saveConfirmation;
+	
+	
 }
 
 

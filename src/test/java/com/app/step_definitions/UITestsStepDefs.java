@@ -30,8 +30,6 @@ public class UITestsStepDefs {
 
 	@Given("^I logged into suiteCRM$")
 	public void i_logged_into_suiteCRM() {
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		driver.manage().window().fullscreen();
 		driver.get(ConfigurationReader.getProperty("url"));
 		loginPage.login(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
 	}

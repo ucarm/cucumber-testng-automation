@@ -18,8 +18,9 @@ Feature: SugarCRM menu options
       | Accounts |
       | Contacts |
       | Cases    |
-       
-   @f&f
+
+  # this one is supposed to fail
+  @f&f
   Scenario: Verify Sales menu options
     Given I logged into suiteCRM
     When I hover over the Sales menu
@@ -27,4 +28,4 @@ Feature: SugarCRM menu options
       | Home     |
       | Accounts |
       | Contacts |
-      | Cases    |     
+      | Cases    |

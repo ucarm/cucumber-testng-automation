@@ -61,7 +61,10 @@ public class SuiteCRMDashboardPage {
 
 	@FindBy(linkText = "Create Task")
 	public WebElement createTask;
-
+	
+	@FindBy(linkText = "Create Contact")
+	public WebElement createContact;
+	
 	public void logout() {
 		Actions action = new Actions(driver);
 		action.moveToElement(profileMenu);

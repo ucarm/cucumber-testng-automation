@@ -22,25 +22,40 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BrowserUtils {
-	
+
 	public static void hover(WebElement element) {
 		Actions actions = new Actions(Driver.getDriver());
 		actions.moveToElement(element).perform();
 	}
-	
-	public static List<String> getElementsText(By locator){
-		
-		 List<WebElement> elems =Driver.getDriver().findElements(locator);
-		 List<String> elemTexts = new ArrayList<>();
-
-		 for(WebElement el : elems) {
-		 	if(!el.getText().isEmpty()) {
-		 		elemTexts.add(el.getText());
-		 	}
-		 }
-		 return elemTexts;
+	/**
+	 * return a list of string from a list of elements
+	 * ignores any element with no text
+	 * @param list
+	 * @return
+	 */
+	public static List<String> getElementsText(List<WebElement> list) {
+		List<String> elemTexts = new ArrayList<>();
+		for (WebElement el : list) {
+			if (!el.getText().isEmpty()) {
+				elemTexts.add(el.getText());
+			}
+		}
+		return elemTexts;
 	}
-	
+
+	public static List<String> getElementsText(By locator) {
+
+		List<WebElement> elems = Driver.getDriver().findElements(locator);
+		List<String> elemTexts = new ArrayList<>();
+
+		for (WebElement el : elems) {
+			if (!el.getText().isEmpty()) {
+				elemTexts.add(el.getText());
+			}
+		}
+		return elemTexts;
+	}
+
 	public static WebElement waitForVisibility(WebElement element, int timeToWaitInSec) {
 		WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeToWaitInSec);
 		return wait.until(ExpectedConditions.visibilityOf(element));
@@ -62,8 +77,9 @@ public class BrowserUtils {
 	}
 
 	public static WebElement fluentWait(final WebElement webElement, int timeinsec) {
-		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(Driver.getDriver()).withTimeout(timeinsec, TimeUnit.SECONDS)
-				.pollingEvery(timeinsec, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+		FluentWait<WebDriver> wait = new FluentWait<WebDriver>(Driver.getDriver())
+				.withTimeout(timeinsec, TimeUnit.SECONDS).pollingEvery(timeinsec, TimeUnit.SECONDS)
+				.ignoring(NoSuchElementException.class);
 		WebElement element = wait.until(new Function<WebDriver, WebElement>() {
 			public WebElement apply(WebDriver driver) {
 				return webElement;
@@ -95,7 +111,7 @@ public class BrowserUtils {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void switchToWindow(String targetTitle) {
 		String origin = Driver.getDriver().getWindowHandle();
 		for (String handle : Driver.getDriver().getWindowHandles()) {

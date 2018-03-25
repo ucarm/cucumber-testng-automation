@@ -19,7 +19,6 @@ Feature: Creating contacts
     When click on the save button
     Then I should see contact information for "Sarah Connor"
 
-  @create_contact
   Scenario Outline: Create multiple contacts
     And I open the create contact page
     And I enter the first name "<firstname>" and the last name "<lastname>"

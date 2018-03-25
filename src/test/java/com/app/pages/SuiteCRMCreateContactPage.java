@@ -1,5 +1,7 @@
 package com.app.pages;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,18 +31,23 @@ public class SuiteCRMCreateContactPage {
 
 	@FindBy(id = "SAVE")
 	public WebElement save;
-	
+
 	@FindBy(xpath = "//input[@title='Save']")
 	public WebElement saveConfirmation;
-	
-	
+
+	@FindBy(id = "phone_mobile")
+	public WebElement cellPhone;
+
+	public void save() {
+		save.click();
+		try {
+			Driver.getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+			saveConfirmation.click();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+	}
+
 }
-
-
-
-
-
-
-
-
-

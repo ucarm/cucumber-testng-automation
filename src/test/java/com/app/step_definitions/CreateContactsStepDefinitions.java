@@ -44,15 +44,7 @@ public class CreateContactsStepDefinitions {
 
 	@When("^click on the save button$")
 	public void click_on_the_save_button() {
-		createContact.save.click();
-		try {
-			Driver.getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
-			createContact.saveConfirmation.click();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+		createContact.save();
 	}
 
 	@Then("^I should see contact information for \"([^\"]*)\"$")

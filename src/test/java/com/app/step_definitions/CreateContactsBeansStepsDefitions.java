@@ -11,21 +11,17 @@ import com.app.utilities.BrowserUtils;
 import cucumber.api.java.en.When;
 
 public class CreateContactsBeansStepsDefitions {
-	
+
 	SuiteCRMDashboardPage dashboard = new SuiteCRMDashboardPage();
 	SuiteCRMCreateContactPage createContact = new SuiteCRMCreateContactPage();
 	SuitCRMContactInformationPage contactInformation = new SuitCRMContactInformationPage();
 
-	
 	@When("^I save a new contact:$")
 	public void i_save_a_new_contact(List<ContactBean> contacts) {
-		
-		// tc 1 step 21
+
 		ContactBean contactBean = contacts.get(0);
-		// tc 1 step 23
 		// open the create contact page
 		BrowserUtils.hover(dashboard.createLink);
-		// 
 		dashboard.createContact.click();
 		// enter data
 		createContact.firsName.sendKeys(contactBean.getFirstName());

@@ -1,0 +1,7 @@
+/target/
+.classpath
+.gitignore
+.settings/
+bin/
+test-output/
+/.DS_Store

@@ -1,6 +1,6 @@
 Feature: Creating tasks
 
-  @functional @regression @smoke @taskcreation
+  @functional @regression @taskcreation
   Scenario: Create a task
     Given I logged into suiteCRM
     When I click on create task

@@ -8,11 +8,11 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 				"html:target/cucumber-report",
 				"json:target/cucumber.json"
 		},
-		tags = "@notes",
+		tags = "@regression",
 		features="src/test/resources/com/app/features/",
 		glue="com/app/step_definitions/",
 		dryRun=false 
 )
-public class CukesRunner extends AbstractTestNGCucumberTests {
+public class RegressionRunner extends AbstractTestNGCucumberTests {
 
 }

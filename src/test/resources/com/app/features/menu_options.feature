@@ -8,7 +8,7 @@ Feature: SugarCRM menu options
       | Home      |
       | Emails    |
       | Documents |
-      | Projects  |
+      | projects  |
 
   @f&f
   Scenario: Verify Support menu options

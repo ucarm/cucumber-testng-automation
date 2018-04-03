@@ -1,5 +1,6 @@
 Feature: SugarCRM menu options
 
+@smoke
   Scenario: Verify Collaboration menu options
     Given I logged into suiteCRM
     When I hover over the Collaboration menu
@@ -7,7 +8,7 @@ Feature: SugarCRM menu options
       | Home      |
       | Emails    |
       | Documents |
-      | projects  |
+      | Projects  |
 
   @f&f
   Scenario: Verify Support menu options

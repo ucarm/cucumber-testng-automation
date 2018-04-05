@@ -3,7 +3,7 @@
 
 	<test name="Automated tests">
 		<classes>
-			<class name ="com.app.runners.RegressionTestRunner"></class>
+			<class name ="com.app.runners.RegressionRunner"></class>
 		</classes>
 	</test>
 

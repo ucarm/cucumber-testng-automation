@@ -7,6 +7,10 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.testng.annotations.Test;
 
@@ -65,6 +69,25 @@ public class JDBCConnection {
 		System.out.println(i +" -> " + rsMedata.getColumnName(i));
 	  }
 	  
+	  //Throw resultset into a List of Maps
+	  //Create a List of Maps
+	  List<Map<String,Object>> list = new ArrayList<>();
+	  ResultSetMetaData rsMdata = resultSet.getMetaData();
+	  
+	  int colCount = rsMdata.getColumnCount();
+	  
+	  while(resultSet.next()) {
+		  Map<String,Object> rowMap = new HashMap<>();
+		  
+		  for(int col = 1; col <= colCount; col++) {
+			  rowMap.put(rsMdata.getColumnName(col), resultSet.getObject(col));	  
+		  }
+		  
+		  
+		  list.add(rowMap);
+	  }
+	  
+	  //
 	  resultSet.close();	  
 	  statement.close();	  
 	  connection.close();

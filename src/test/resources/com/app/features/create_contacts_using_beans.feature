@@ -11,6 +11,19 @@ Feature: Create contacts using beans
   @create_contact
   Scenario Outline: Create way more contacts
     Given I logged into suiteCRM
+
+    When I save a new contact:
+      | firstName   | lastName   | department   | officePhone | cellPhone | email   |
+      | <firstname> | <lastname> | <department> | <office>    | <cell>    | <email> |
+
+    When I save a new contact:
+      | firstName   | lastName   | department   | officePhone | cellPhone | email   |
+      | <firstname> | <lastname> | <department> | <office>    | <cell>    | <email> |
+
+    When I save a new contact:
+      | firstName   | lastName   | department   | officePhone | cellPhone | email   |
+      | <firstname> | <lastname> | <department> | <office>    | <cell>    | <email> |
+
     When I save a new contact:
       | firstName   | lastName   | department   | officePhone | cellPhone | email   |
       | <firstname> | <lastname> | <department> | <office>    | <cell>    | <email> |

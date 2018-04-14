@@ -87,7 +87,12 @@ public class JDBCConnection {
 		  list.add(rowMap);
 	  }
 	  
-	  //
+	  //print all emloyee ids from a list of maps
+	  
+	  for (Map<String, Object> emp: list) {
+		System.out.println(emp.get("EMPLOYEE_ID"));
+	  }
+
 	  resultSet.close();	  
 	  statement.close();	  
 	  connection.close();

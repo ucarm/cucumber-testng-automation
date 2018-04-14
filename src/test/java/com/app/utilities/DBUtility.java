@@ -80,6 +80,4 @@ public class DBUtility {
 
 }
 
-enum DBType{
-	ORACLE,MYSQL,MARIADB
-}
+

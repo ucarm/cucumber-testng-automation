@@ -26,8 +26,8 @@ public class HRAppStepDefs {
 	private WebDriver driver = Driver.getDriver();
 	private HRAppDeptEmpPage deptEmpPage=new HRAppDeptEmpPage();
 	
-	private Map<String,String> UIDepartmentData = new HashMap<>();
-	private Map<String,Object> DBDepartmentData = new HashMap<>();
+	private Map<String,String> UIDepartmentData;
+	private Map<String,Object> DBDepartmentData;
 	
 	@Given("^I am on DeptEmpPage$")
 	public void i_am_on_DeptEmpPage() {
@@ -36,6 +36,8 @@ public class HRAppStepDefs {
 
 	@When("^I search for department id (\\d+)$")
 	public void i_search_for_department_id(int deptID) {
+		UIDepartmentData = new HashMap<>();
+		
 	    int currentDepId = Integer.parseInt(deptEmpPage.departmentID.getText());
 	    
 	    while(currentDepId != deptID) {
@@ -60,8 +62,14 @@ public class HRAppStepDefs {
 	}
 
 	@When("^I search for email \"([^\"]*)\" to see firstname and lastname$")
-	public void i_search_for_email_to_see_firstname_and_lastname(String email) {
-	   
+	public void i_search_for_email_to_see_firstname_and_lastname(String emailID) {
+		deptEmpPage.email.sendKeys(emailID);
+		deptEmpPage.FindDetails.click();
+		
+		UIDepartmentData = new HashMap<>();
+		
+		UIDepartmentData.put("FIRST_NAME", deptEmpPage.firstName.getText());
+		UIDepartmentData.put("LAST_NAME", deptEmpPage.lastName.getText());
 	}
 	
 	@Then("^UI data and Database data must match$")

@@ -33,7 +33,7 @@ public class HRAppDeptEmpPage {
 	@FindBy(id="pt1:cb3")
 	public WebElement Next;
 	
-	@FindBy(id="pt1:r1:0:it1::content")
+	@FindBy(id="0")
 	public WebElement email;
 	
 	@FindBy(id="pt1:r1:0:cb1")
@@ -47,6 +47,9 @@ public class HRAppDeptEmpPage {
 	
 	@FindBy(xpath="//div[@id='pt1:pc1:t1::db']//tr")
 	public List<WebElement> employeesCount;
+	
+	@FindBy(id="pt1:pc1:_dchTbr::icon")
+	public WebElement detach;
 	
 	public void searchForDepartment(int deptID) {
 	    int currentDepId = Integer.parseInt(departmentID.getText());

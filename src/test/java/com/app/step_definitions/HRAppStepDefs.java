@@ -77,6 +77,9 @@ public class HRAppStepDefs {
 	@When("^I search for department id (\\d+) and get number of employees$")
 	public void i_search_for_department_id_and_get_number_of_employees(int deptID) {
 		deptEmpPage.searchForDepartment(deptID);
+		deptEmpPage.detach.click();
+		BrowserUtils.waitFor(2);
+		BrowserUtils.scrollDown();
 		UIDepartmentData = new HashMap<>();
 		UIDepartmentData.put("EMPLOYEES_COUNT", String.valueOf(deptEmpPage.employeesCount.size()));
 	}

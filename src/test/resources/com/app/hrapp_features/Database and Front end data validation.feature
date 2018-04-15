@@ -27,11 +27,7 @@ Feature: Hr Application Database and UI data verification
 		 Then UI data and Database data must match
 		Examples:
 		|departmentID|
-		|10|
-		|20|
-		|40|
 		|50|
-		|60|
 	
 	
 	

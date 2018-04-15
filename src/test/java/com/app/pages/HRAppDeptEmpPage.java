@@ -29,6 +29,19 @@ public class HRAppDeptEmpPage {
 	
 	@FindBy(id="pt1:cb3")
 	public WebElement Next;
+	
+	@FindBy(id="pt1:r1:0:it1::content")
+	public WebElement email;
+	
+	@FindBy(id="pt1:r1:0:cb1")
+	public WebElement FindDetails;
+	
+	@FindBy(id="pt1:r1:0:ot1")
+	public WebElement firstName;
+	
+	@FindBy(id="pt1:r1:0:ot2")
+	public WebElement lastName;
+	
 
 }
 

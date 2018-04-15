@@ -59,11 +59,19 @@ public class HRAppStepDefs {
 	    DBUtility.closeConnections();
 	}
 
+	@When("^I search for email \"([^\"]*)\" to see firstname and lastname$")
+	public void i_search_for_email_to_see_firstname_and_lastname(String email) {
+	   
+	}
+	
 	@Then("^UI data and Database data must match$")
 	public void ui_data_and_Database_data_must_match() {
-		assertEquals(UIDepartmentData.get("DEPARTMENT_NAME"),DBDepartmentData.get("DEPARTMENT_NAME"));
-		assertEquals(UIDepartmentData.get("LOCATION_ID"),String.valueOf(DBDepartmentData.get("LOCATION_ID")));
-		assertEquals(UIDepartmentData.get("MANAGER_ID"),String.valueOf(DBDepartmentData.get("MANAGER_ID")));
+		for (String key : DBDepartmentData.keySet()) {
+			assertEquals(UIDepartmentData.get(key),String.valueOf(DBDepartmentData.get(key)));
+		}
+//		assertEquals(UIDepartmentData.get("DEPARTMENT_NAME"),DBDepartmentData.get("DEPARTMENT_NAME"));
+//		assertEquals(UIDepartmentData.get("LOCATION_ID"),String.valueOf(DBDepartmentData.get("LOCATION_ID")));
+//		assertEquals(UIDepartmentData.get("MANAGER_ID"),String.valueOf(DBDepartmentData.get("MANAGER_ID")));
 	}
 
 }

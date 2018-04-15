@@ -27,9 +27,13 @@ public class HRAppStepDefs {
 	    int currentDepId = Integer.parseInt(deptEmpPage.departmentID.getText());
 	    
 	    while(currentDepId != deptID) {
+	    		
 	    		deptEmpPage.Next.click();
+	    		BrowserUtils.waitFor(2);
+	    		deptEmpPage = new HRAppDeptEmpPage();
 	    		BrowserUtils.waitForVisibility(deptEmpPage.departmentID, 5);
 	    		currentDepId = Integer.parseInt(deptEmpPage.departmentID.getText());
+	    		
 	    }
 	    
 	}

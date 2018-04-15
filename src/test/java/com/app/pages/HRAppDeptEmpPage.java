@@ -33,7 +33,7 @@ public class HRAppDeptEmpPage {
 	@FindBy(id="pt1:cb3")
 	public WebElement Next;
 	
-	@FindBy(id="0")
+	@FindBy(id="pt1:r1:0:it1::content")
 	public WebElement email;
 	
 	@FindBy(id="pt1:r1:0:cb1")

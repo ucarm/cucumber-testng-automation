@@ -2,6 +2,8 @@ package com.app.step_definitions;
 
 import org.openqa.selenium.WebDriver;
 
+import com.app.pages.HRAppDeptEmpPage;
+import com.app.utilities.BrowserUtils;
 import com.app.utilities.ConfigurationReader;
 import com.app.utilities.Driver;
 
@@ -13,6 +15,7 @@ import cucumber.api.java.en.When;
 public class HRAppStepDefs {
 	
 	private WebDriver driver = Driver.getDriver();
+	private HRAppDeptEmpPage deptEmpPage=new HRAppDeptEmpPage();
 	
 	@Given("^I am on DeptEmpPage$")
 	public void i_am_on_DeptEmpPage() {
@@ -21,6 +24,13 @@ public class HRAppStepDefs {
 
 	@When("^I search for department id (\\d+)$")
 	public void i_search_for_department_id(int deptID) {
+	    int currentDepId = Integer.parseInt(deptEmpPage.departmentID.getText());
+	    
+	    while(currentDepId != deptID) {
+	    		deptEmpPage.Next.click();
+	    		BrowserUtils.waitForVisibility(deptEmpPage.departmentID, 5);
+	    		currentDepId = Integer.parseInt(deptEmpPage.departmentID.getText());
+	    }
 	    
 	}
 

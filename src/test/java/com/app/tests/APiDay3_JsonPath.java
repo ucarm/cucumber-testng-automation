@@ -4,6 +4,7 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 import static org.testng.Assert.assertEquals;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -170,8 +171,12 @@ public class APiDay3_JsonPath {
 		System.out.println(empIdList);
 		
 		//get all employee lastnames, whose salary is more than 7000
+		List<String> lastnames = json.getList("items.findAll{it.salary  >10000}.last_name");
+		System.out.println(lastnames);
 		
-		
+		JsonPath jsonFromFile = new JsonPath(new File("/Users/cybertekschool/Desktop/employees.json"));
+		List<String> emails2 = jsonFromFile.getList("items.email");
+		System.out.println(emails2);
 		
 		
 	}

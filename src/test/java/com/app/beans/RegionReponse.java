@@ -11,7 +11,6 @@ public class RegionReponse {
 	private String region_name;
 	private ArrayList<Map<String,String>> links;
 	
-	
 	public ArrayList<Map<String, String>> getLinks() {
 		return links;
 	}

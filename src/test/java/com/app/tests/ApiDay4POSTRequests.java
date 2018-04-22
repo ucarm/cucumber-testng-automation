@@ -8,8 +8,11 @@ import java.util.Map;
 import java.util.Random;
 
 import org.apache.poi.ss.formula.functions.Sumproduct;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.app.beans.Country;
+import com.app.beans.CountryResponse;
 import com.app.beans.Region;
 import com.app.beans.RegionReponse;
 import com.app.utilities.ConfigurationReader;
@@ -89,6 +92,32 @@ public class ApiDay4POSTRequests {
 		assertEquals(responseRegion.getRegion_name(),region.getRegion_name());
 		
 	}
+	
+	@Test
+	public void postCountryUsingPojo() {
+		String url = ConfigurationReader.getProperty("hrapp.baseresturl") + "/countries/";
+		
+		Country reqCountry = new Country();
+		reqCountry.setCountry_id("TE");
+		reqCountry.setCountry_name("A country");
+		reqCountry.setRegion_id(4);
+		
+		Response response = given().log().all()
+				.accept(ContentType.JSON)
+			   .and().contentType(ContentType.JSON)
+			   .and().body(reqCountry)
+			   .when().post(url);
+		
+		assertEquals(response.getStatusCode(),201);
+		
+		CountryResponse resCountry = response.body().as(CountryResponse.class);
+		
+		assertEquals(resCountry.getCountry_id(),reqCountry.getCountry_id()); 
+		assertEquals(resCountry.getCountry_name(),reqCountry.getCountry_name()); 
+		assertEquals(resCountry.getRegion_id(),reqCountry.getRegion_id());
+
+	}
+	
 	
 	
 }

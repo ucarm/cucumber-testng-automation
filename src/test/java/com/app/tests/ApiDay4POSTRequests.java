@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.apache.poi.ss.formula.functions.Sumproduct;
 import org.testng.annotations.Test;
@@ -69,7 +70,7 @@ public class ApiDay4POSTRequests {
 		String url = ConfigurationReader.getProperty("hrapp.baseresturl") + "/regions/";
 		
 		Region region = new Region();
-		region.setRegion_id(11111);
+		region.setRegion_id(new Random().nextInt(999999));
 		region.setRegion_name("murodil's region");
 		
 		Response response = given().log().all()
@@ -82,7 +83,10 @@ public class ApiDay4POSTRequests {
 		
 		RegionReponse responseRegion = response.body().as(RegionReponse.class);
 		
-		
+		//And response body should match request body
+		//region id and region name must match
+		assertEquals(responseRegion.getRegion_id(),region.getRegion_id());
+		assertEquals(responseRegion.getRegion_name(),region.getRegion_name());
 		
 	}
 	

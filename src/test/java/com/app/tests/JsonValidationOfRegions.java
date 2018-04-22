@@ -24,7 +24,8 @@ public class JsonValidationOfRegions {
 	/*
 	 * Warm up task: Given Content type is Json And Limit is 10 When I send request
 	 * to Rest API url: http://34.223.219.142:1212/ords/hr/regions Then status code
-	 * is 200 Then I should see following data: 1 Europe 2 Americas 3 Asia 4 Middle
+	 * is 200 
+	 * Then I should see following data: 1 Europe 2 Americas 3 Asia 4 Middle
 	 * East and Africa
 	 */
 
@@ -133,6 +134,7 @@ public class JsonValidationOfRegions {
 	public void testRegions2() {
 		String baseUrl = ConfigurationReader.getProperty("hrapp.baseresturl");
 		Response response = given().accept(ContentType.JSON).and().params("limit", 10).when().get(baseUrl + "/regions");
+		
 		assertEquals(response.statusCode(), 200);
 		JsonPath json = response.jsonPath();
 		
@@ -148,14 +150,6 @@ public class JsonValidationOfRegions {
 			assertEquals(regions.get(i).get("region_name"), expectedRegions.get(i + 1));
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 }

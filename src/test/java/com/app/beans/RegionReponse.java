@@ -3,9 +3,11 @@ package com.app.beans;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Region {
+public class RegionReponse {
 	private int region_id;
 	private String region_name;
+	
+	
 
 	public void setRegion_id(int region_id) {
 		this.region_id = region_id;

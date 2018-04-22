@@ -9,6 +9,7 @@ import java.util.Map;
 import org.apache.poi.ss.formula.functions.Sumproduct;
 import org.testng.annotations.Test;
 
+import com.app.beans.Region;
 import com.app.utilities.ConfigurationReader;
 
 import io.restassured.http.ContentType;
@@ -40,7 +41,7 @@ public class ApiDay4POSTRequests {
 		//String requestJson = "{\"region_id\" : 5,\"region_name\" : \"murodil's region\"}";
 		
 		Map requestMap = new HashMap<>();
-		requestMap.put("region_id", 55555);
+		requestMap.put("region_id", 555555);
 		requestMap.put("region_name", "murodil's region");
 		
 		Response response = given().accept(ContentType.JSON)
@@ -62,7 +63,27 @@ public class ApiDay4POSTRequests {
 		
 	}
 	
+	@Test
+	public void postUsingPOJO() {
+		String url = ConfigurationReader.getProperty("hrapp.baseresturl") + "/regions/";
+		
+		Region region = new Region();
+		region.setRegion_id(1111);
+		region.setRegion_name("murodil's region");
+		
+		Response response = given().log().all()
+							.accept(ContentType.JSON)
+						   .and().contentType(ContentType.JSON)
+						   .and().body(region)
+						   .when().post(url);
 	
+		assertEquals(response.statusCode(),201);
+		
+		Region responseRegion = response.body().as(Region.class);
+		
+		
+		
+	}
 	
 	
 }

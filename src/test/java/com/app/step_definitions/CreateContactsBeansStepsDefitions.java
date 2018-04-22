@@ -2,6 +2,8 @@ package com.app.step_definitions;
 
 import java.util.List;
 
+import org.testng.asserts.SoftAssert;
+
 import com.app.beans.ContactBean;
 import com.app.pages.SuitCRMContactInformationPage;
 import com.app.pages.SuiteCRMCreateContactPage;
@@ -31,5 +33,9 @@ public class CreateContactsBeansStepsDefitions {
 		createContact.department.sendKeys(contactBean.getDepartment());
 		// save
 		createContact.save();
+		
+		
+		
+		
 	}
 }

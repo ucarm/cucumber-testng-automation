@@ -1,6 +1,7 @@
 package com.app.tests;
 
 import static io.restassured.RestAssured.*;
+import static org.testng.Assert.assertEquals;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,7 +28,7 @@ public class ApiDay4POSTRequests {
 			"region_id" : 5,
 			"region_name" : "murodil's region"
 		}
-		Then status code should be 200
+		Then status code should be 201
 		And response body should match request body
 	*/
 	
@@ -39,7 +40,7 @@ public class ApiDay4POSTRequests {
 		//String requestJson = "{\"region_id\" : 5,\"region_name\" : \"murodil's region\"}";
 		
 		Map requestMap = new HashMap<>();
-		requestMap.put("region_id", 555);
+		requestMap.put("region_id", 55555);
 		requestMap.put("region_name", "murodil's region");
 		
 		Response response = given().accept(ContentType.JSON)
@@ -49,6 +50,19 @@ public class ApiDay4POSTRequests {
 		
 		System.out.println(response.statusLine());
 		response.prettyPrint();
+		
+		//Then status code should be 201
+		//And response body should match request body
+		assertEquals(response.statusCode(),201);
+		Map responseMap = response.body().as(Map.class);
+		
+		//assertEquals(responseMap,requestMap); did not work
+		assertEquals(responseMap.get("region_id"),requestMap.get("region_id"));
+		assertEquals(responseMap.get("region_name"),requestMap.get("region_name"));
+		
 	}
+	
+	
+	
 	
 }

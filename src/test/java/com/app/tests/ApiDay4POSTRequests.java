@@ -10,6 +10,7 @@ import org.apache.poi.ss.formula.functions.Sumproduct;
 import org.testng.annotations.Test;
 
 import com.app.beans.Region;
+import com.app.beans.RegionReponse;
 import com.app.utilities.ConfigurationReader;
 
 import io.restassured.http.ContentType;
@@ -68,7 +69,7 @@ public class ApiDay4POSTRequests {
 		String url = ConfigurationReader.getProperty("hrapp.baseresturl") + "/regions/";
 		
 		Region region = new Region();
-		region.setRegion_id(1111);
+		region.setRegion_id(11111);
 		region.setRegion_name("murodil's region");
 		
 		Response response = given().log().all()
@@ -79,7 +80,7 @@ public class ApiDay4POSTRequests {
 	
 		assertEquals(response.statusCode(),201);
 		
-		Region responseRegion = response.body().as(Region.class);
+		RegionReponse responseRegion = response.body().as(RegionReponse.class);
 		
 		
 		

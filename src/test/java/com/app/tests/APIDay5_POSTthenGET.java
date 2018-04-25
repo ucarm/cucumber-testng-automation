@@ -67,7 +67,6 @@ public class APIDay5_POSTthenGET {
 		reqEmployee.put("manager_id",null);
 		reqEmployee.put("department_id",90);
 		
-
 		//Given Content type and Accept type is Json
 		Response response = given().accept(ContentType.JSON)
 							.and().contentType(ContentType.JSON)
@@ -87,6 +86,17 @@ public class APIDay5_POSTthenGET {
 		And employee JSON Response Data should match the posted JSON data
 		*/
 		
+		response = given().accept(ContentType.JSON)
+				   .when().get(url+randomID);
+		
+		assertEquals(response.statusCode(),200);
+		
+		Map getResMap = response.body().as(Map.class);
+		
+		for(Object key:reqEmployee.keySet()) {
+			System.out.println(key + ": " +reqEmployee.get(key) + "<>" +getResMap.get(key));
+			assertEquals(getResMap.get(key),reqEmployee.get(key));
+		}
 		
 	}
 }

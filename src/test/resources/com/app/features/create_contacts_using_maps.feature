@@ -1,5 +1,5 @@
 Feature: Creating contacts
-
+	@Regression @CTL_123 @contacts
   Scenario: Create contact using a map
     Given I logged into suiteCRM
     When I create a new contact:

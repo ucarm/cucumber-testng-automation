@@ -51,6 +51,4 @@ public class HRappSearchPage {
 	@FindBy(id="it8::content")
 	public WebElement annualSalary;
 	
-	
-
 }

@@ -11,7 +11,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 		tags = "@ApiPost",
 		features= {"src/test/resources/com/app/features/","src/test/resources/com/app/hrapp_features/"},
 		glue="com/app/step_definitions/",
-		dryRun=false 
+		dryRun=true 
 )
 public class CukesRunner extends AbstractTestNGCucumberTests {
 

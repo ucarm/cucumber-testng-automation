@@ -28,6 +28,16 @@ public class API_PostAnEmployee {
 	String url = ConfigurationReader.getProperty("hrapp.baseresturl") + "/employees/";
 	Map reqEmployee;
 	
+	@Then("^I search for Employee with \"([^\"]*)\" id$")
+	public void i_search_for_Employee_with_id(String arg1) {
+	   
+	}
+
+	@Then("^UI search results must match API post employee data$")
+	public void ui_search_results_must_match_API_post_employee_data() {
+	    
+	}
+	
 	@Given("^Content type and Accept type is Json$")
 	public void content_type_and_Accept_type_is_Json() {
 		request = given().accept(ContentType.JSON)

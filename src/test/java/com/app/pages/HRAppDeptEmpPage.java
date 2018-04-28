@@ -51,6 +51,9 @@ public class HRAppDeptEmpPage {
 	@FindBy(id="pt1:pc1:_dchTbr::icon")
 	public WebElement detach;
 	
+	@FindBy(id="pt1:cb6")
+	public WebElement query;
+	
 	public void searchForDepartment(int deptID) {
 	    int currentDepId = Integer.parseInt(departmentID.getText());
 	    

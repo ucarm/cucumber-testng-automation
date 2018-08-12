@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 
 public class JDBCConnection {
   
-	String oracleDbUrl = "jdbc:oracle:thin:@ec2-52-70-143-199.compute-1.amazonaws.com:1521:xe";
+	String oracleDbUrl = "jdbc:oracle:thin:@ec2-35-173-178-232.compute-1.amazonaws.com:1521:xe";
 	String oracleDbUsername = "hr";		
 	String oracleDbPassword = "hr";
 	
